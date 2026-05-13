@@ -106,15 +106,15 @@
   </div>
   <div class="tw"><div class="tc">
       <div class="tg" style="margin-bottom:22px">
-        <div class="fg"><label>Originalpreis (€)</label><input class="fi" id="pr" type="number" placeholder="30" min="0" step="0.01"/></div>
+        <div class="fg"><label>Originalpreis (€)</label><input class="fi" id="pr" type="number" placeholder="z.B. 100" min="0" step="0.01"/></div>
         <div class="fg"><label>Rabatt (%)</label><input class="fi" id="sc" type="number" placeholder="RABATTPREIS BERECHNEN" min="0" max="100" step="0.1"/></div>
       </div>
-      <button class="cb" onclick="calcSc()">Endpreis</button>
+      <button class="cb" onclick="calcSc()">RABATTPREIS BERECHNEN</button>
       <div class="rb" id="res">
-        <div class="rr big"><span class="rl">Ersparnis</span><span class="rv" id="r1">—</span></div>
-        <div class="rr"><span class="rl">Originalpreis</span><span class="rv" id="r2">—</span></div>
-        <div class="rr"><span class="rl">[('Wie berechnet man den Rabattpreis?', 'Endpreis = Originalpreis × (1 - Rabatt/100).'), ('Wie kombiniert man zwei Rabatte?', 'Zwei Rabatte addieren sich nicht direkt: 20% + 10% ≠ 30% sondern 28%.')]</span><span class="rv" id="r3">—</span></div>
-      </div></div></div>
+        <div class="rr big"><span class="rl">Endpreis</span><span class="rv" id="r1">—</span></div>
+        <div class="rr"><span class="rl">Ersparnis</span><span class="rv" id="r2">—</span></div>
+        <div class="rr"><span class="rl">Originalpreis</span><span class="rv" id="r3">—</span></div>
+      </div></div></div></div>
   <div class="faq"><div class="faqt">Häufige Fragen</div><div class="fqi"><div class="fqq">Wie berechnet man den Rabattpreis?<span class="arr">+</span></div><div class="fqa">Endpreis = Originalpreis × (1 - Rabatt/100).</div></div><div class="fqi"><div class="fqq">Wie kombiniert man zwei Rabatte?<span class="arr">+</span></div><div class="fqa">Zwei Rabatte addieren sich nicht direkt: 20% + 10% ≠ 30% sondern 28%.</div></div></div>
 
 <footer>
@@ -140,7 +140,7 @@ function rej(){localStorage.setItem('cc','0');var e=document.getElementById('ck'
 var ckEl=document.getElementById('ck');if(ckEl&&localStorage.getItem('cc')!=null)ckEl.style.display='none';
 document.querySelectorAll('.fqi').forEach(i=>i.addEventListener('click',()=>i.classList.toggle('open')));
 
-var fmt=n=>'€ '+n.toLocaleString('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2});function calcSc(){var p=parseFloat(document.getElementById('pr').value),s=parseFloat(document.getElementById('sc').value);if(isNaN(p)||isNaN(s))return;var f=p*(1-s/100);document.getElementById('r1').textContent=fmt(f);document.getElementById('r2').textContent=fmt(p-f);document.getElementById('r3').textContent=fmt(p);document.getElementById('res').classList.add('show');}
+var fmt=n=>'€ '+n.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2});function calcSc(){var p=parseFloat(document.getElementById('pr').value),s=parseFloat(document.getElementById('sc').value);if(isNaN(p)||isNaN(s))return;var finale=p*(1-s/100);var risp=p-finale;document.getElementById('r1').textContent=fmt(finale);document.getElementById('r2').textContent=fmt(risp);document.getElementById('r3').textContent=fmt(p);document.getElementById('res').classList.add('show');}
 </script>
 </body>
 </html>
