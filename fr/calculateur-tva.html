@@ -3,9 +3,21 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <meta name="description" content="Calculez la TVA en ligne gratuitement. Ajoutez ou extrayez la TVA à 20%, 10%, 5,5%, 2,1%. Calcul instantané."/>
-  <title>Calculateur TVA en Ligne Gratuit | calcolatore.eu</title>
+  <meta property="og:title" content="Calculateur TVA Gratuit — calcolatore.eu"/>
+  <meta property="og:type" content="website"/>
+  <meta name="description" content="Calculez la TVA en ligne gratuitement. Ajoutez ou extrayez la TVA à 20%, 10%, 5,5%, 2,1%. Calcul instantané du montant HT, TVA et TTC."/>
+  <meta name="keywords" content="calculateur TVA, calculer TVA, extraire TVA, TVA 20%, TVA 10%, calcul TVA en ligne France"/>
+  <meta name="author" content="calcolatore.eu"/>
+  <meta property="og:title" content="Calculateur TVA Gratuit — calcolatore.eu"/>
+  <meta property="og:description" content="Ajoutez ou extrayez la TVA de n'importe quel montant. Taux 20%, 10%, 5,5%, 2,1%. Résultat instantané, sans inscription."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://calcolatore.eu/fr/calculateur-tva.html"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="Calculateur TVA Gratuit"/>
+  <meta name="twitter:description" content="Ajoutez ou extrayez la TVA de n'importe quel montant. Gratuit et instantané."/>
+  <title>Calculateur TVA Gratuit — Ajouter ou Extraire la TVA | calcolatore.eu</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Bebas+Neue&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculateur TVA en Ligne","url":"https://calcolatore.eu/fr/calculateur-tva.html","description":"Calculez la TVA en ligne gratuitement à 20%, 10%, 5,5%, 2,1%.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}</script>
   <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{--bg:#0d0d0d;--card:#1c1c1c;--border:#2a2a2a;--accent:#e8ff47;--accent2:#ff6b35;--text:#f0f0f0;--muted:#555;--btn:#222;--btn-h:#2e2e2e}
@@ -21,16 +33,23 @@
   .lb{background:none;border:1px solid transparent;border-radius:6px;color:var(--muted);font-family:'DM Mono',monospace;font-size:0.7rem;padding:4px 8px;cursor:pointer;transition:all 0.15s;letter-spacing:1px}
   .lb:hover{color:var(--text);border-color:var(--border)}
   .lb.active{color:var(--accent);border-color:var(--accent);background:rgba(232,255,71,0.06)}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+  .hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px}
+  .mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(13,13,13,0.97);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+  .mobile-nav.open{display:flex}
+  .mobile-nav a{color:var(--text);text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px}
+  .mobile-nav a:hover{color:var(--accent)}
+  .mobile-nav-close{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
   .tag{display:inline-block;background:var(--accent);color:#000;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:2px;padding:4px 10px;margin-bottom:20px;font-weight:500}
   .page-hero{padding:72px 48px 40px;max-width:960px;margin:0 auto}
   .page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,5vw,5rem);line-height:0.95;letter-spacing:2px;margin-bottom:14px}
   .page-hero h1 span{color:var(--accent)}
   .page-hero p{color:#888;font-size:0.92rem;line-height:1.8;font-weight:300;max-width:580px}
+  .intro{color:#777;font-size:0.85rem;line-height:1.9;max-width:680px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
   .tw{max-width:960px;margin:0 auto;padding:0 48px 72px}
   .tc{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;animation:fi 0.6s cubic-bezier(0.22,1,0.36,1) both}
   @keyframes fi{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
   .tg{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px}
-  .tg3{grid-template-columns:1fr 1fr 1fr}
   .fg{display:flex;flex-direction:column;gap:7px}
   .fg label{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
   .fi{background:#111;border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'DM Mono',monospace;font-size:0.95rem;padding:13px 16px;outline:none;transition:border-color 0.2s;width:100%}
@@ -50,6 +69,18 @@
   .rv{color:var(--accent);font-family:'DM Mono',monospace;font-weight:500}
   .rr.big .rl{color:var(--text);font-weight:600;font-size:0.92rem}
   .rr.big .rv{font-size:1.35rem;letter-spacing:-0.5px}
+  .copy-btn{display:none;margin-top:14px;background:none;border:1px solid var(--border);border-radius:8px;color:var(--muted);font-family:'DM Mono',monospace;font-size:0.68rem;padding:8px 14px;cursor:pointer;letter-spacing:1px;transition:all 0.2s;width:100%}
+  .copy-btn:hover{color:var(--text);border-color:#444}
+  .copy-btn.visible{display:block}
+  .related{max-width:960px;margin:0 auto;padding:0 48px 48px}
+  .related-title{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+  .related-title::after{content:'';flex:1;height:1px;background:var(--border)}
+  .related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+  .rc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;text-decoration:none;color:var(--text);transition:border-color 0.2s,transform 0.2s;display:block}
+  .rc:hover{border-color:#3a3a3a;transform:translateY(-2px)}
+  .rc-icon{font-size:1.4rem;margin-bottom:8px}
+  .rc-title{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:1px;margin-bottom:4px}
+  .rc-desc{font-size:0.75rem;color:#777;line-height:1.5}
   .faq{max-width:960px;margin:0 auto;padding:0 48px 72px}
   .faqt{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:28px;display:flex;align-items:center;gap:12px}
   .faqt::after{content:'';flex:1;height:1px;background:var(--border)}
@@ -57,8 +88,8 @@
   .fqq{font-size:0.88rem;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:12px}
   .arr{color:var(--accent);transition:transform 0.2s;font-size:1.1rem;flex-shrink:0}
   .fqi.open .arr{transform:rotate(45deg)}
-  .fqa{color:#888;font-size:0.83rem;line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.2s}
-  .fqi.open .fqa{max-height:300px;padding-top:10px}
+  .fqa{color:#888;font-size:0.83rem;line-height:1.9;max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.2s}
+  .fqi.open .fqa{max-height:400px;padding-top:12px}
   footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
   .fl{display:flex;gap:16px;flex-wrap:wrap}
   .fl a{color:var(--muted);font-family:'DM Mono',monospace;font-size:0.68rem;text-decoration:none;letter-spacing:1px;transition:color 0.2s}
@@ -66,100 +97,178 @@
   .fc{color:var(--muted);font-family:'DM Mono',monospace;font-size:0.68rem}
   #ck{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 24px;display:flex;align-items:center;gap:16px;box-shadow:0 20px 60px rgba(0,0,0,0.6);z-index:998;max-width:660px;width:calc(100% - 40px);animation:su 0.4s cubic-bezier(0.22,1,0.36,1) both}
   @keyframes su{from{opacity:0;transform:translateX(-50%) translateY(16px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
-  /* CALCULATOR */
-  .calc-wrap{max-width:380px;margin:0 auto}
-  .btn{background:var(--btn);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'DM Mono',monospace;font-size:0.95rem;padding:17px 8px;cursor:pointer;transition:background 0.12s,transform 0.08s,border-color 0.12s;user-select:none}
-  .btn:hover{background:var(--btn-h);border-color:#3a3a3a}
-  .btn:active{transform:scale(0.93)}
-  .btn.op{color:var(--accent);background:rgba(232,255,71,0.06)}
-  .btn.op:hover{background:rgba(232,255,71,0.12)}
-  .btn.eq{background:var(--accent);color:#000;border-color:var(--accent);font-size:1.1rem;font-weight:600}
-  .btn.eq:hover{background:#d4eb30}
-  .btn.cl{color:var(--accent2);background:rgba(255,107,53,0.08);border-color:rgba(255,107,53,0.2)}
-  .btn.fn{color:#aaa;font-size:0.78rem}
-  .btn.zero{grid-column:span 2;text-align:left;padding-left:20px}
-  .btn.sci{font-size:0.7rem;padding:11px 4px;color:#a0cfff;background:rgba(100,160,255,0.06);border-color:rgba(100,160,255,0.15);letter-spacing:0.5px}
-  .btn.sci:hover{background:rgba(100,160,255,0.14)}
   @media(max-width:768px){
-    header{padding:14px 18px}
-    nav{display:none}
-    .page-hero,.tw,.faq{padding-left:18px;padding-right:18px}
-    .page-hero{padding-top:44px}
-    .tg,.tg3{grid-template-columns:1fr}
+    header{padding:14px 18px} nav{display:none} .hamburger{display:flex}
+    .page-hero,.tw,.faq,.related{padding-left:18px;padding-right:18px}
+    .page-hero{padding-top:44px} .tg{grid-template-columns:1fr}
     footer{padding:18px;flex-direction:column;text-align:center}
     #ck{flex-direction:column;align-items:flex-start}
   }
-</style>
+  </style>
 </head>
 <body>
-
 <header>
   <a href="index.html" class="logo">CALC</a>
-  <nav><a href="calculateur-tva.html" class='active'>TVA</a><a href="calculateur-credit.html">Crédit</a><a href="calculateur-pourcentage.html">Pourcentage</a><a href="calculateur-remise.html">Remise</a><a href="retenue-source.html">Retenue</a><a href="prelevement-forfaitaire.html">Prélèvement</a><a href="calculateur-interets.html">Intérêts</a><a href="salaire-net-brut.html">Net/Brut</a><a href="calculatrice.html">Calculatrice</a></nav>
-  <div class="lang-bar"><button class="lb" onclick="location.href='../it/calcolo-iva.html'">IT</button><button class="lb" onclick="location.href='../en/vat-calculator.html'">EN</button><button class="lb" onclick="location.href='../de/mehrwertsteuer-rechner.html'">DE</button><button class="lb active" onclick="location.href='calculateur-tva.html'">FR</button></div>
+  <nav>
+    <a href="calcolo-iva.html" class="active">IVA</a>
+    <a href="calculateur-credit.html">Mutuo</a>
+    <a href="calcolo-percentuale.html">Percentuale</a>
+    <a href="calcolo-sconto.html">Sconto</a>
+    <a href="retenue-source.html">Ritenuta</a>
+    <a href="prelevement-forfaitaire.html">Cedolare</a>
+    <a href="calcolo-interessi.html">Interessi</a>
+    <a href="salaire-net-brut.html">Netto/Lordo</a>
+    <a href="calcolatrice.html">Calcolatrice</a>
+  </nav>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="lang-bar">
+      <button class="lb active" onclick="location.href='../it/calcolo-iva.html'">IT</button>
+      <button class="lb" onclick="location.href='../en/vat-calculator.html'">EN</button>
+      <button class="lb" onclick="location.href='../de/mehrwertsteuer-rechner.html'">DE</button>
+      <button class="lb active" onclick="location.href='calculateur-tva.html'">FR</button>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('mn').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
-  <div class="page-hero">
-    <span class="tag">Outil Gratuit</span>
-    <h1>CALCULATEUR<span>TVA</span></h1>
-    <p>Ajoutez ou extrayez la TVA de n'importe quel montant. Taux français: 20%, 10%, 5,5%, 2,1%.</p>
+<div class="mobile-nav" id="mn">
+  <button class="mobile-nav-close" onclick="document.getElementById('mn').classList.remove('open')">✕</button>
+  <a href="index.html">Home</a>
+  <a href="calcolo-iva.html">IVA</a>
+  <a href="calculateur-credit.html">Mutuo</a>
+  <a href="calcolo-percentuale.html">Percentuale</a>
+  <a href="calcolo-sconto.html">Sconto</a>
+  <a href="retenue-source.html">Ritenuta</a>
+  <a href="prelevement-forfaitaire.html">Cedolare</a>
+  <a href="calcolo-interessi.html">Interessi</a>
+  <a href="salaire-net-brut.html">Netto/Lordo</a>
+  <a href="calcolatrice.html">Calcolatrice</a>
+</div>
+
+<div class="page-hero">
+  <span class="tag">Mis à jour Mai 2026</span>
+  <h1>CALCULATEUR <span>TVA</span></h1>
+  <p>Ajoutez ou extrayez la TVA de n'importe quel montant. Taux français: 20% normale, 10% intermédiaire, 5,5% réduite, 2,1% super réduite.</p>
+  <p class="intro">La TVA (Taxe sur la Valeur Ajoutée) est l'impôt indirect le plus répandu en France, appliqué aux biens et services. Cet outil calcule la TVA dans les deux sens: ajoutez-la à un montant HT, ou extrayez-la d'un prix TTC. Gratuit, instantané, sans inscription.</p>
+</div>
+
+<div class="tw"><div class="tc">
+  <div class="tg" style="margin-bottom:22px">
+    <div class="fg">
+      <label>Montant (€)</label>
+      <input class="fi" id="imp" type="number" placeholder="ex. 1000" min="0" step="0.01" oninput="autoCalc()"/>
+    </div>
+    <div class="fg">
+      <label>Taux TVA</label>
+      <select class="fs" id="aliq" onchange="autoCalc()">
+        <option value="20">20% — Normale</option>
+        <option value="10">10% — Intermédiaire</option>
+        <option value="5.5">5,5% — Réduite</option>
+        <option value="2.1">2,1% — Super réduite</option>
+      </select>
+    </div>
   </div>
-  <div class="tw"><div class="tc">
-    <div class="tg" style="margin-bottom:22px">
-      <div class="fg"><label>Montant (€)</label><input class="fi" id="imp" type="number" placeholder="Es. 1000" min="0" step="0.01"/></div>
-      <div class="fg"><label>Taux TVA</label><select class="fs" id="aliq"><option value="20">20% — Normale</option><option value="10">10% — Intermédiaire</option><option value="5.5">5,5% — Réduite</option><option value="2.1">2,1% — Super réduite</option></select></div>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px">
-      <button class="cb" style="margin:0" onclick="calcIva('add')">+ AJOUTER TVA</button>
-      <button class="cb cb2" style="margin:0" onclick="calcIva('rem')">EXTRAIRE TVA</button>
-    </div>
-    <div class="rb" id="res">
-      <div class="rr"><span class="rl">Montant HT</span><span class="rv" id="ri">—</span></div>
-      <div class="rr"><span class="rl">TVA (<span id="ra">?</span>%)</span><span class="rv" id="rv">—</span></div>
-      <div class="rr big"><span class="rl">Total TTC</span><span class="rv" id="rt">—</span></div>
-    </div>
-  </div></div>
-  <div class="faq"><div class="faqt">Questions Fréquentes</div><div class="fqi"><div class="fqq">Qu'est-ce que la TVA?<span class="arr">+</span></div><div class="fqa">La TVA (Taxe sur la Valeur Ajoutée) est un impôt indirect sur la consommation. C'est le consommateur final qui la supporte, incluse dans le prix de vente.</div></div><div class="fqi"><div class="fqq">Comment extraire la TVA?<span class="arr">+</span></div><div class="fqa">Montant HT = Montant TTC ÷ (1 + taux). Exemple: 120 € ÷ 1,20 = 100 € HT + 20 € TVA.</div></div><div class="fqi"><div class="fqq">Quels sont les taux de TVA en France?<span class="arr">+</span></div><div class="fqa">20% taux normal, 10% taux intermédiaire (restauration, travaux), 5,5% taux réduit (alimentation, livres), 2,1% taux super réduit (médicaments).</div></div><div class="fqi"><div class="fqq">Qui est assujetti à la TVA?<span class="arr">+</span></div><div class="fqa">Les entreprises dont le chiffre d'affaires dépasse les seuils de la franchise en base de TVA (34 400 € pour les prestations de services).</div></div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px">
+    <button class="cb" style="margin:0" onclick="calcIva('add')">+ AJOUTER TVA</button>
+    <button class="cb cb2" style="margin:0" onclick="calcIva('rem')">EXTRAIRE TVA</button>
+  </div>
+  <div class="rb" id="res">
+    <div class="rr"><span class="rl">Montant HT (hors TVA)</span><span class="rv" id="ri">—</span></div>
+    <div class="rr"><span class="rl">IVA (<span id="ra">20</span>%)</span><span class="rv" id="rv">—</span></div>
+    <div class="rr big"><span class="rl">Total TTC (avec TVA)</span><span class="rv" id="rt">—</span></div>
+  </div>
+  <button class="copy-btn" id="copyBtn" onclick="copyResult()">📋 COPIER LE RÉSULTAT</button>
+</div></div>
+
+<div class="related">
+  <div class="related-title">Voir aussi</div>
+  <div class="related-grid">
+    <a href="retenue-source.html" class="rc"><div class="rc-icon">📄</div><div class="rc-title">Retenue à la Source</div><div class="rc-desc">Net freelance et total facture avec TVA</div></a>
+    <a href="calculateur-credit.html" class="rc"><div class="rc-icon">🏠</div><div class="rc-title">Calculateur Crédit</div><div class="rc-desc">Rata mensile, interessi e costo complessivo</div></a>
+    <a href="salaire-net-brut.html" class="rc"><div class="rc-icon">💼</div><div class="rc-title">Net ↔ Brut</div><div class="rc-desc">Salaire avec impôt sur le revenu</div></a>
+    <a href="prelevement-forfaitaire.html" class="rc"><div class="rc-icon">🏡</div><div class="rc-title">Prélèvement Forfaitaire</div><div class="rc-desc">Impôt sur les loyers</div></a>
+  </div>
+</div>
+
+<div class="faq">
+  <div class="faqt">Questions Fréquentes</div>
+  <div class="fqi"><div class="fqq">Qu'est-ce que la TVA et comment fonctionne-t-elle?<span class="arr">+</span></div><div class="fqa">La TVA (Taxe sur la Valeur Ajoutée) est un impôt indirect prélevé à chaque stade de la production et de la distribution de biens et services. C'est le consommateur final qui supporte la charge fiscale, incluse dans le prix de vente. Les entreprises la collectent pour le compte de l'État et la reversent périodiquement à la DGFiP. En France, la TVA est régie par le Code général des impôts.</div></div>
+  <div class="fqi"><div class="fqq">Comment extraire la TVA d'un prix TTC?<span class="arr">+</span></div><div class="fqa">Montant HT = Prix TTC ÷ (1 + taux). Exemple avec TVA à 20%: 120€ ÷ 1,20 = 100€ HT + 20€ TVA. Utile pour les entreprises et professionnels qui doivent isoler la TVA d'un montant TTC pour leur comptabilité.</div></div>
+  <div class="fqi"><div class="fqq">Quels sont les taux de TVA en France en 2026?<span class="arr">+</span></div><div class="fqa">La France applique quatre taux de TVA: 20% taux normal (majorité des biens et services), 10% taux intermédiaire (restauration, travaux de rénovation, transports), 5,5% taux réduit (alimentation, livres, spectacles, abonnements gaz/électricité), 2,1% taux super réduit (médicaments remboursables, presse, première représentation de spectacles vivants).</div></div>
+  <div class="fqi"><div class="fqq">Qui est exonéré de TVA?<span class="arr">+</span></div><div class="fqa">Les auto-entrepreneurs bénéficiant de la franchise en base de TVA (chiffre d'affaires inférieur à 37.500€ pour les services) ne facturent pas la TVA et ne la récupèrent pas. Les opérations exonérées incluent: services médicaux, enseignement, assurances, opérations bancaires. Les exportations hors UE sont taxées à 0%. Les livraisons intracommunautaires à des assujettis sont exonérées sous conditions.</div></div>
+  <div class="fqi"><div class="fqq">Quand doit-on déclarer et payer la TVA?<span class="arr">+</span></div><div class="fqa">Les entreprises au régime réel normal déclarent mensuellement (CA3) et paient dans les 15 jours suivant la période. Au régime simplifié, deux acomptes semestriels sont versés en juillet et décembre, avec une déclaration annuelle (CA12). Les micro-entrepreneurs au régime franchise en base ne déclarent pas la TVA. Les pénalités de retard sont de 5% du montant dû plus 0,20% par mois de retard.</div></div>
+</div>
 
 <footer>
   <a href="index.html" class="logo">CALC</a>
-  <div class="fl"><a href="calculateur-tva.html">TVA</a><a href="calculateur-credit.html">Crédit</a><a href="calculateur-pourcentage.html">Pourcentage</a><a href="calculateur-remise.html">Remise</a><a href="retenue-source.html">Retenue</a><a href="prelevement-forfaitaire.html">Prélèvement</a><a href="calculateur-interets.html">Intérêts</a><a href="salaire-net-brut.html">Net/Brut</a><a href="calculatrice.html">Calculatrice</a><a href="../privacy.html">Confidentialité</a></div>
+  <div class="fl">
+    <a href="calcolo-iva.html">IVA</a>
+    <a href="calculateur-credit.html">Mutuo</a>
+    <a href="calcolo-percentuale.html">Percentuale</a>
+    <a href="calcolo-sconto.html">Sconto</a>
+    <a href="retenue-source.html">Ritenuta</a>
+    <a href="prelevement-forfaitaire.html">Cedolare</a>
+    <a href="calcolo-interessi.html">Interessi</a>
+    <a href="salaire-net-brut.html">Netto/Lordo</a>
+    <a href="calcolatrice.html">Calcolatrice</a>
+    <a href="../privacy.html">Privacy</a>
+    <a href="contact.html">Contact</a>
+  </div>
   <span class="fc">© 2026 calcolatore.eu</span>
 </footer>
 
 <div id="ck">
   <div style="flex:1">
     <p style="font-size:0.8rem;font-weight:600;margin-bottom:4px">🍪 Nous utilisons des cookies</p>
-    <p style="font-size:0.71rem;color:var(--muted);line-height:1.6">Cookies techniques et Google AdSense pour des annonces pertinentes. <a href="../privacy.html" style="color:var(--accent);text-decoration:none">Politique de confidentialité</a></p>
+    <p style="font-size:0.71rem;color:var(--muted);line-height:1.6">Cookies techniques et Google AdSense pour des annonces pertinentes. <a href="../privacy.html" style="color:var(--accent);text-decoration:none">Privacy Policy</a></p>
   </div>
   <div style="display:flex;gap:8px;flex-shrink:0">
     <button onclick="rej()" style="background:none;border:1px solid var(--border);border-radius:8px;color:var(--muted);font-family:'DM Mono',monospace;font-size:0.68rem;padding:7px 12px;cursor:pointer;letter-spacing:1px">REFUSER</button>
     <button onclick="acc()" style="background:var(--accent);border:none;border-radius:8px;color:#000;font-family:'DM Mono',monospace;font-size:0.68rem;font-weight:600;padding:7px 12px;cursor:pointer;letter-spacing:1px">ACCEPTER</button>
   </div>
 </div>
-<script>
 
+<script>
 function acc(){localStorage.setItem('cc','1');var e=document.getElementById('ck');if(e)e.style.display='none';}
 function rej(){localStorage.setItem('cc','0');var e=document.getElementById('ck');if(e)e.style.display='none';}
 var ckEl=document.getElementById('ck');if(ckEl&&localStorage.getItem('cc')!=null)ckEl.style.display='none';
 document.querySelectorAll('.fqi').forEach(i=>i.addEventListener('click',()=>i.classList.toggle('open')));
 
+var fmt=n=>'€ '+n.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2});
+var lastMode='add';
 
-  var fmt=n=>'€ '+n.toLocaleString('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2});
-  function calcIva(m){
-    var imp=parseFloat(document.getElementById('imp').value);
-    var a=parseFloat(document.getElementById('aliq').value)/100;
-    var av=document.getElementById('aliq').value;
-    if(isNaN(imp)||imp<=0)return;
-    var imponibile,iva,tot;
-    if(m==='add'){imponibile=imp;iva=imp*a;tot=imp+iva;}
-    else{tot=imp;imponibile=imp/(1+a);iva=tot-imponibile;}
-    document.getElementById('ri').textContent=fmt(imponibile);
-    document.getElementById('rv').textContent=fmt(iva);
-    document.getElementById('rt').textContent=fmt(tot);
-    document.getElementById('ra').textContent=av;
-    document.getElementById('res').classList.add('show');
-  }
+function calcIva(m){
+  lastMode=m;
+  var imp=parseFloat(document.getElementById('imp').value);
+  var a=parseFloat(document.getElementById('aliq').value)/100;
+  var av=document.getElementById('aliq').value;
+  if(isNaN(imp)||imp<=0)return;
+  var imponibile,iva,tot;
+  if(m==='add'){imponibile=imp;iva=imp*a;tot=imp+iva;}
+  else{tot=imp;imponibile=imp/(1+a);iva=tot-imponibile;}
+  document.getElementById('ri').textContent=fmt(imponibile);
+  document.getElementById('rv').textContent=fmt(iva);
+  document.getElementById('rt').textContent=fmt(tot);
+  document.getElementById('ra').textContent=av;
+  document.getElementById('res').classList.add('show');
+  document.getElementById('copyBtn').classList.add('visible');
+}
+
+function autoCalc(){
+  var imp=document.getElementById('imp').value;
+  if(imp&&parseFloat(imp)>0)calcIva(lastMode);
+}
+
+function copyResult(){
+  var text='Imponibile: '+document.getElementById('ri').textContent+'\nIVA ('+document.getElementById('ra').textContent+'%): '+document.getElementById('rv').textContent+'\nTotale: '+document.getElementById('rt').textContent;
+  navigator.clipboard.writeText(text).then(function(){
+    var btn=document.getElementById('copyBtn');
+    btn.textContent='✅ COPIATO!';
+    setTimeout(function(){btn.textContent='📋 COPIER LE RÉSULTAT';},2000);
+  });
+}
 </script>
 </body>
 </html>
