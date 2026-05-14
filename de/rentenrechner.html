@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="Schätzen Sie Ihre gesetzliche Rente und den Renteneintritt. Basierend auf dem deutschen Rentenpunktesystem 2026."/>
+  <meta property="og:title" content="Rentenrechner 2026 — Deutsche Rente berechnen"/>
+  <meta property="og:description" content="Schätzen Sie Ihre gesetzliche Rente und den Renteneintritt. Basierend auf dem deutschen Rentenpunktesystem 2026."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://calcolatore.eu/de/rentenrechner.html"/>
+  <title>Rentenrechner 2026 — Deutsche Rente berechnen | calcolatore.eu</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Bebas+Neue&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#0d0d0d;--card:#1c1c1c;--border:#2a2a2a;--accent:#e8ff47;--accent2:#ff6b35;--text:#f0f0f0;--muted:#555;--btn:#222;--btn-h:#2e2e2e}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:0.4}
+  header{display:flex;justify-content:space-between;align-items:center;padding:20px 48px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(13,13,13,0.93);backdrop-filter:blur(12px);z-index:100;gap:16px;flex-wrap:wrap}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:4px;color:var(--accent);text-decoration:none}
+  nav{display:flex;flex-wrap:wrap;gap:4px}
+  nav a{color:var(--muted);text-decoration:none;font-size:0.7rem;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:6px;transition:all 0.2s;border:1px solid transparent}
+  nav a:hover,nav a.active{color:var(--text);border-color:var(--border)}
+  .lang-bar{display:flex;gap:4px}
+  .lb{background:none;border:1px solid transparent;border-radius:6px;color:var(--muted);font-family:'DM Mono',monospace;font-size:0.7rem;padding:4px 8px;cursor:pointer;transition:all 0.15s;letter-spacing:1px}
+  .lb:hover{color:var(--text);border-color:var(--border)}
+  .lb.active{color:var(--accent);border-color:var(--accent);background:rgba(232,255,71,0.06)}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+  .hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px}
+  .mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(13,13,13,0.97);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:20px;overflow-y:auto;padding:60px 20px}
+  .mobile-nav.open{display:flex}
+  .mobile-nav a{color:var(--text);text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:3px}
+  .mobile-nav a:hover{color:var(--accent)}
+  .mobile-nav-close{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+  .tag{display:inline-block;background:var(--accent);color:#000;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:2px;padding:4px 10px;margin-bottom:20px;font-weight:500}
+  .page-hero{padding:72px 48px 40px;max-width:960px;margin:0 auto}
+  .page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,5vw,5rem);line-height:0.95;letter-spacing:2px;margin-bottom:14px}
+  .page-hero h1 span{color:var(--accent)}
+  .page-hero p{color:#888;font-size:0.92rem;line-height:1.8;font-weight:300;max-width:580px}
+  .intro{color:#777;font-size:0.85rem;line-height:1.9;max-width:680px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
+  .tw{max-width:960px;margin:0 auto;padding:0 48px 72px}
+  .tc{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;animation:fi 0.6s cubic-bezier(0.22,1,0.36,1) both}
+  @keyframes fi{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .tg{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px}
+  .tg3{grid-template-columns:1fr 1fr 1fr}
+  .fg{display:flex;flex-direction:column;gap:7px}
+  .fg label{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+  .fi{background:#111;border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'DM Mono',monospace;font-size:0.95rem;padding:13px 16px;outline:none;transition:border-color 0.2s;width:100%}
+  .fi:focus{border-color:var(--accent)}
+  .fs{background:#111;border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'DM Mono',monospace;font-size:0.85rem;padding:13px 16px;outline:none;cursor:pointer;width:100%}
+  .fs option{background:#1c1c1c}
+  .cb{width:100%;background:var(--accent);color:#000;border:none;border-radius:12px;font-family:'DM Mono',monospace;font-size:0.82rem;font-weight:600;letter-spacing:2px;padding:15px;cursor:pointer;transition:background 0.15s,transform 0.08s;margin-bottom:22px}
+  .cb:hover{background:#d4eb30}
+  .cb:active{transform:scale(0.98)}
+  .rb{background:#111;border:1px solid var(--border);border-radius:13px;padding:22px;display:none}
+  .rb.show{display:block}
+  .rr{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);font-size:0.83rem}
+  .rr:last-child{border-bottom:none}
+  .rl{color:var(--muted);font-family:'DM Mono',monospace}
+  .rv{color:var(--accent);font-family:'DM Mono',monospace;font-weight:500}
+  .rr.big .rl{color:var(--text);font-weight:600;font-size:0.92rem}
+  .rr.big .rv{font-size:1.35rem;letter-spacing:-0.5px}
+  .copy-btn{display:none;margin-top:14px;background:none;border:1px solid var(--border);border-radius:8px;color:var(--muted);font-family:'DM Mono',monospace;font-size:0.68rem;padding:8px 14px;cursor:pointer;letter-spacing:1px;transition:all 0.2s;width:100%}
+  .copy-btn:hover{color:var(--text);border-color:#444}
+  .copy-btn.visible{display:block}
+  .note{font-size:0.75rem;color:var(--muted);margin-top:14px;line-height:1.6;padding:12px 16px;background:#111;border-radius:8px;border-left:3px solid var(--accent)}
+  .related{max-width:960px;margin:0 auto;padding:0 48px 48px}
+  .related-title{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+  .related-title::after{content:'';flex:1;height:1px;background:var(--border)}
+  .related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+  .rc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;text-decoration:none;color:var(--text);transition:border-color 0.2s,transform 0.2s;display:flex;align-items:center;gap:12px}
+  .rc:hover{border-color:#3a3a3a;transform:translateY(-2px)}
+  .rc-icon{font-size:1.4rem;flex-shrink:0}
+  .rc-title{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:1px;margin-bottom:3px}
+  .rc-desc{font-size:0.75rem;color:#777;line-height:1.4}
+  .faq{max-width:960px;margin:0 auto;padding:0 48px 72px}
+  .faqt{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+  .faqt::after{content:'';flex:1;height:1px;background:var(--border)}
+  .fqi{border-bottom:1px solid var(--border);padding:18px 0;cursor:pointer}
+  .fqq{font-size:0.88rem;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .arr{color:var(--accent);transition:transform 0.2s;font-size:1.1rem;flex-shrink:0}
+  .fqi.open .arr{transform:rotate(45deg)}
+  .fqa{color:#888;font-size:0.83rem;line-height:1.9;max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.2s}
+  .fqi.open .fqa{max-height:400px;padding-top:12px}
+  footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .fl{display:flex;gap:16px;flex-wrap:wrap}
+  .fl a{color:var(--muted);font-family:'DM Mono',monospace;font-size:0.68rem;text-decoration:none;letter-spacing:1px;transition:color 0.2s}
+  .fl a:hover{color:var(--text)}
+  .fc{color:var(--muted);font-family:'DM Mono',monospace;font-size:0.68rem}
+  #ck{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 24px;display:flex;align-items:center;gap:16px;box-shadow:0 20px 60px rgba(0,0,0,0.6);z-index:998;max-width:660px;width:calc(100% - 40px);animation:su 0.4s cubic-bezier(0.22,1,0.36,1) both}
+  @keyframes su{from{opacity:0;transform:translateX(-50%) translateY(16px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+  @media(max-width:768px){
+    header{padding:14px 18px} nav{display:none} .hamburger{display:flex}
+    .page-hero,.tw,.faq,.related{padding-left:18px;padding-right:18px}
+    .page-hero{padding-top:44px} .tg,.tg3{grid-template-columns:1fr}
+    footer{padding:18px;flex-direction:column;text-align:center}
+    #ck{flex-direction:column;align-items:flex-start}
+  }
+  </style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">CALC</a>
+  <nav><a href="../de/mehrwertsteuer-rechner.html">MwSt</a>
+    <a href="../de/kreditrechner.html">Kredit</a>
+    <a href="../de/netto-brutto.html">Netto/Brutto</a>
+    <a href="../de/rechner.html">Rechner</a></nav>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="lang-bar">
+      <button class="lb" onclick="location.href='../it/index.html'">IT</button>
+      <button class="lb " onclick="location.href='../en/index.html'">EN</button>
+      <button class="lb active" onclick="location.href='../de/index.html'">DE</button>
+      <button class="lb " onclick="location.href='../fr/index.html'">FR</button>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('mn').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="mobile-nav" id="mn">
+  <button class="mobile-nav-close" onclick="document.getElementById('mn').classList.remove('open')">✕</button>
+  <a href="index.html">Home</a>
+  <a href="../de/mehrwertsteuer-rechner.html">MwSt</a><a href="../de/kreditrechner.html">Kredit</a><a href="../de/netto-brutto.html">Netto/Brutto</a><a href="../de/rechner.html">Rechner</a>
+</div>
+
+<div class="page-hero">
+  <span class="tag">Aktualisiert 2026</span>
+  <h1>RENTEN<span>RECHNER</span></h1>
+  <p>Schätzen Sie Ihre gesetzliche Rente und das Renteneintrittsalter. Berechnung basierend auf dem deutschen Rentenpunktesystem 2026.</p>
+  <p class="intro">Die gesetzliche Rente in Deutschland basiert auf Rentenpunkten (Entgeltpunkte). Pro Jahr, in dem Sie den Durchschnittslohn verdienen, erhalten Sie genau 1 Rentenpunkt. Der aktuelle Rentenwert beträgt 39,32 € pro Punkt (West, 2025). Das Regelrenteneintrittsalter steigt schrittweise auf 67 Jahre.</p>
+</div>
+<div class="tw"><div class="tc">
+  <div class="tg" style="margin-bottom:18px">
+    <div class="fg"><label>Geburtsjahr</label><input class="fi" id="nascita" type="number" placeholder="z.B. 1980" min="1950" max="2000"/></div>
+    <div class="fg"><label>Beginn Berufstätigkeit</label><input class="fi" id="inizio" type="number" placeholder="z.B. 2005" min="1970" max="2025"/></div>
+  </div>
+  <div class="tg" style="margin-bottom:22px">
+    <div class="fg"><label>Aktuelles Bruttogehalt (€/Jahr)</label><input class="fi" id="sal" type="number" placeholder="z.B. 45000" min="0" step="1000"/></div>
+    <div class="fg"><label>Durchschnittslohn Deutschland (€/Jahr)</label><input class="fi" id="avg" type="number" value="45358" min="0" step="100"/></div>
+  </div>
+  <button class="cb" onclick="calcRente()">RENTE BERECHNEN</button>
+  <div class="rb" id="res">
+    <div class="rr"><span class="rl">Regelrenteneintrittsalter</span><span class="rv" id="r1">—</span></div>
+    <div class="rr"><span class="rl">Jahre bis zur Rente</span><span class="rv" id="r2">—</span></div>
+    <div class="rr"><span class="rl">Geschätzte Rentenpunkte gesamt</span><span class="rv" id="r3">—</span></div>
+    <div class="rr big"><span class="rl">Monatsrente brutto geschätzt</span><span class="rv" id="r4">—</span></div>
+    <div class="rr big"><span class="rl">Monatsrente netto geschätzt</span><span class="rv" id="r5">—</span></div>
+  </div>
+  <div class="note">⚠️ Schätzung basiert auf aktuellem Rentenwert (39,32 €/Punkt West 2025) und gleichbleibendem Gehalt. Tatsächliche Rente hängt von Ihrem vollständigen Versicherungsverlauf ab. Fordern Sie Ihren Renteninformationsbrief bei der Deutschen Rentenversicherung an: www.deutsche-rentenversicherung.de</div>
+  <button class="copy-btn" id="copyBtn" onclick="copyRente()">📋 ERGEBNIS KOPIEREN</button>
+</div></div>
+<div class="related">
+  <div class="related-title">Siehe auch</div>
+  <div class="related-grid">
+    <a href="abfindung.html" class="rc"><div class="rc-icon">📦</div><div><div class="rc-title">Abfindungsrechner</div><div class="rc-desc">Abfindung bei Kündigung</div></div></a>
+    <a href="netto-brutto.html" class="rc"><div class="rc-icon">💵</div><div><div class="rc-title">Netto/Brutto</div><div class="rc-desc">Gehalt mit Steuer und Abgaben</div></div></a>
+    <a href="zinsrechner.html" class="rc"><div class="rc-icon">📈</div><div><div class="rc-title">Zinsrechner</div><div class="rc-desc">Kapitalanlage und Zinsen</div></div></a>
+  </div>
+</div>
+<div class="faq">
+  <div class="faqt">Häufige Fragen</div>
+  <div class="fqi"><div class="fqq">Wie funktioniert das Rentenpunktesystem?<span class="arr">+</span></div><div class="fqa">Das Rentenpunktesystem (Entgeltpunkte) ist das Herzstück der gesetzlichen Rentenversicherung. Für jedes Jahr, in dem Sie den Durchschnittsverdienst aller Versicherten erzielen, erhalten Sie genau 1 Entgeltpunkt. Wer mehr verdient, bekommt mehr Punkte, wer weniger verdient, entsprechend weniger. Die Summe aller Punkte multipliziert mit dem aktuellen Rentenwert ergibt die monatliche Rente.</div></div>
+  <div class="fqi"><div class="fqq">Wann kann ich in Rente gehen?<span class="arr">+</span></div><div class="fqa">Das Regelrenteneintrittsalter steigt schrittweise: Wer 1964 oder später geboren ist, muss bis 67 warten. Mit 45 Versicherungsjahren ist eine abschlagsfreie Rente mit 63 möglich (Rente für besonders langjährig Versicherte). Eine Rente ab 63 mit Abschlägen ist mit 35 Versicherungsjahren möglich (0,3% Abschlag pro Monat vorzeitiger Inanspruchnahme).</div></div>
+  <div class="fqi"><div class="fqq">Wie hoch ist der aktuelle Rentenwert?<span class="arr">+</span></div><div class="fqa">Der aktuelle Rentenwert (West) beträgt ab Juli 2025 voraussichtlich 39,32 € pro Rentenpunkt. Der Rentenwert wird jährlich zum 1. Juli angepasst, orientiert an der Lohnentwicklung des Vorjahres. Im Osten galt bis 2024 ein etwas niedrigerer Rentenwert, der jedoch seit 2024 vollständig angeglichen ist.</div></div>
+  <div class="fqi"><div class="fqq">Lohnt sich eine private Altersvorsorge?<span class="arr">+</span></div><div class="fqa">Ja, dringend empfohlen. Die gesetzliche Rente allein reicht in der Regel nicht aus, um den Lebensstandard im Alter zu halten (Rentenniveau ca. 48% des Durchschnittslohns). Riester-Rente (staatlich gefördert, besonders für Familien), betriebliche Altersvorsorge (bAV, steuer- und sozialabgabenfrei bis 4% der BBG) und private Rentenversicherungen oder ETF-Sparpläne sind sinnvolle Ergänzungen.</div></div>
+</div>
+<footer>
+  <a href="index.html" class="logo">CALC</a>
+  <div class="fl">
+    <a href="../de/mehrwertsteuer-rechner.html">MwSt</a><a href="../de/kreditrechner.html">Kredit</a><a href="../de/netto-brutto.html">Netto/Brutto</a><a href="../de/rechner.html">Rechner</a>
+    <a href="../privacy.html">Datenschutz</a>
+  </div>
+  <span class="fc">© 2026 calcolatore.eu</span>
+</footer>
+<div id="ck">
+  <div style="flex:1">
+    <p style="font-size:0.8rem;font-weight:600;margin-bottom:4px">🍪 Wir verwenden Cookies</p>
+    <p style="font-size:0.71rem;color:var(--muted);line-height:1.6">Technische und Google AdSense Cookies für relevante Anzeigen. <a href="../privacy.html" style="color:var(--accent);text-decoration:none">Datenschutz</a></p>
+  </div>
+  <div style="display:flex;gap:8px;flex-shrink:0">
+    <button onclick="rej()" style="background:none;border:1px solid var(--border);border-radius:8px;color:var(--muted);font-family:'DM Mono',monospace;font-size:0.68rem;padding:7px 12px;cursor:pointer;letter-spacing:1px">ABLEHNEN</button>
+    <button onclick="acc()" style="background:var(--accent);border:none;border-radius:8px;color:#000;font-family:'DM Mono',monospace;font-size:0.68rem;font-weight:600;padding:7px 12px;cursor:pointer;letter-spacing:1px">AKZEPTIEREN</button>
+  </div>
+</div>
+<script>
+function acc(){localStorage.setItem('cc','1');var e=document.getElementById('ck');if(e)e.style.display='none';}
+function rej(){localStorage.setItem('cc','0');var e=document.getElementById('ck');if(e)e.style.display='none';}
+var ckEl=document.getElementById('ck');if(ckEl&&localStorage.getItem('cc')!=null)ckEl.style.display='none';
+document.querySelectorAll('.fqi').forEach(i=>i.addEventListener('click',()=>i.classList.toggle('open')));
+var fmt=n=>'€ '+n.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2});
+
+function calcRente(){
+  var nascita=parseInt(document.getElementById('nascita').value);
+  var inizio=parseInt(document.getElementById('inizio').value);
+  var sal=parseFloat(document.getElementById('sal').value)||0;
+  var avg=parseFloat(document.getElementById('avg').value)||45358;
+  if(isNaN(nascita)||isNaN(inizio)||sal<=0)return;
+  var anno=2026;
+  var rentenwert=39.32;
+  var rentenalter=67;
+  var annoPensione=nascita+rentenalter;
+  var anniMancanti=Math.max(0,annoPensione-anno);
+  var contribJahre=anno-inizio+anniMancanti;
+  var punkteProJahr=sal/avg;
+  var gesamtPunkte=punkteProJahr*contribJahre;
+  var renteGross=gesamtPunkte*rentenwert;
+  var renteNet=renteGross*0.80; // approx after taxes and health insurance
+  document.getElementById('r1').textContent=rentenalter+' Jahre (Jahr '+annoPensione+')';
+  document.getElementById('r2').textContent=Math.round(anniMancanti)+' Jahre';
+  document.getElementById('r3').textContent=gesamtPunkte.toFixed(1)+' Punkte';
+  document.getElementById('r4').textContent=fmt(renteGross)+'/Monat';
+  document.getElementById('r5').textContent=fmt(renteNet)+'/Monat';
+  document.getElementById('res').classList.add('show');
+  document.getElementById('copyBtn').classList.add('visible');
+}
+function copyRente(){
+  var text='Monatsrente brutto: '+document.getElementById('r4').textContent+'\nMonatsrente netto: '+document.getElementById('r5').textContent;
+  navigator.clipboard.writeText(text).then(function(){var b=document.getElementById('copyBtn');b.textContent='✅ KOPIERT!';setTimeout(function(){b.textContent='📋 ERGEBNIS KOPIEREN';},2000);});
+}
+</script>
+</body>
+</html>
