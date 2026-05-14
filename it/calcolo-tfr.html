@@ -3,19 +3,13 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <meta name="description" content="Calcola l'IVA online gratis. Aggiungi o scorpora IVA al 22%, 10%, 5%, 4%. Calcolo immediato di imponibile, IVA e totale con un click."/>
-  <meta name="keywords" content="calcolo IVA, calcolare IVA, scorporo IVA, IVA 22%, IVA 10%, calcolatore IVA online"/>
-  <meta name="author" content="calcolatore.eu"/>
-  <meta property="og:title" content="Calcolo IVA Online Gratis — calcolatore.eu"/>
-  <meta property="og:description" content="Aggiungi o scorpora l'IVA da qualsiasi importo. Aliquote 22%, 10%, 5%, 4%. Risultato immediato, nessuna registrazione."/>
+  <meta name="description" content="Calcola il TFR (liquidazione) maturato al termine del rapporto di lavoro. Stima precisa del TFR lordo e netto con rivalutazione ISTAT."/>
+  <meta property="og:title" content="Calcolo TFR Online Gratis — Liquidazione 2026"/>
+  <meta property="og:description" content="Calcola il TFR (liquidazione) maturato al termine del rapporto di lavoro. Stima precisa del TFR lordo e netto con rivalutazione ISTAT."/>
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://calcolatore.eu/it/calcolo-iva.html"/>
-  <meta name="twitter:card" content="summary"/>
-  <meta name="twitter:title" content="Calcolo IVA Online Gratis"/>
-  <meta name="twitter:description" content="Aggiungi o scorpora l'IVA da qualsiasi importo. Gratuito e immediato."/>
-  <title>Calcolo IVA Online Gratis — Aggiungi o Scorpora IVA | calcolatore.eu</title>
+  <meta property="og:url" content="https://calcolatore.eu/it/calcolo-tfr.html"/>
+  <title>Calcolo TFR Online Gratis — Liquidazione 2026 | calcolatore.eu</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Bebas+Neue&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calcolo IVA Online","url":"https://calcolatore.eu/it/calcolo-iva.html","description":"Calcola l'IVA online gratis al 22%, 10%, 5%, 4%.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}</script>
   <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{--bg:#0d0d0d;--card:#1c1c1c;--border:#2a2a2a;--accent:#e8ff47;--accent2:#ff6b35;--text:#f0f0f0;--muted:#555;--btn:#222;--btn-h:#2e2e2e}
@@ -33,9 +27,9 @@
   .lb.active{color:var(--accent);border-color:var(--accent);background:rgba(232,255,71,0.06)}
   .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
   .hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px}
-  .mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(13,13,13,0.97);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+  .mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(13,13,13,0.97);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:20px;overflow-y:auto;padding:60px 20px}
   .mobile-nav.open{display:flex}
-  .mobile-nav a{color:var(--text);text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px}
+  .mobile-nav a{color:var(--text);text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:3px}
   .mobile-nav a:hover{color:var(--accent)}
   .mobile-nav-close{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
   .tag{display:inline-block;background:var(--accent);color:#000;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:2px;padding:4px 10px;margin-bottom:20px;font-weight:500}
@@ -48,6 +42,7 @@
   .tc{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;animation:fi 0.6s cubic-bezier(0.22,1,0.36,1) both}
   @keyframes fi{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
   .tg{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px}
+  .tg3{grid-template-columns:1fr 1fr 1fr}
   .fg{display:flex;flex-direction:column;gap:7px}
   .fg label{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
   .fi{background:#111;border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'DM Mono',monospace;font-size:0.95rem;padding:13px 16px;outline:none;transition:border-color 0.2s;width:100%}
@@ -57,8 +52,6 @@
   .cb{width:100%;background:var(--accent);color:#000;border:none;border-radius:12px;font-family:'DM Mono',monospace;font-size:0.82rem;font-weight:600;letter-spacing:2px;padding:15px;cursor:pointer;transition:background 0.15s,transform 0.08s;margin-bottom:22px}
   .cb:hover{background:#d4eb30}
   .cb:active{transform:scale(0.98)}
-  .cb2{background:var(--btn);color:var(--text);border:1px solid var(--border)}
-  .cb2:hover{background:var(--btn-h)}
   .rb{background:#111;border:1px solid var(--border);border-radius:13px;padding:22px;display:none}
   .rb.show{display:block}
   .rr{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);font-size:0.83rem}
@@ -70,15 +63,16 @@
   .copy-btn{display:none;margin-top:14px;background:none;border:1px solid var(--border);border-radius:8px;color:var(--muted);font-family:'DM Mono',monospace;font-size:0.68rem;padding:8px 14px;cursor:pointer;letter-spacing:1px;transition:all 0.2s;width:100%}
   .copy-btn:hover{color:var(--text);border-color:#444}
   .copy-btn.visible{display:block}
+  .note{font-size:0.75rem;color:var(--muted);margin-top:14px;line-height:1.6;padding:12px 16px;background:#111;border-radius:8px;border-left:3px solid var(--accent)}
   .related{max-width:960px;margin:0 auto;padding:0 48px 48px}
   .related-title{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:12px}
   .related-title::after{content:'';flex:1;height:1px;background:var(--border)}
   .related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
-  .rc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;text-decoration:none;color:var(--text);transition:border-color 0.2s,transform 0.2s;display:block}
+  .rc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;text-decoration:none;color:var(--text);transition:border-color 0.2s,transform 0.2s;display:flex;align-items:center;gap:12px}
   .rc:hover{border-color:#3a3a3a;transform:translateY(-2px)}
-  .rc-icon{font-size:1.4rem;margin-bottom:8px}
-  .rc-title{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:1px;margin-bottom:4px}
-  .rc-desc{font-size:0.75rem;color:#777;line-height:1.5}
+  .rc-icon{font-size:1.4rem;flex-shrink:0}
+  .rc-title{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:1px;margin-bottom:3px}
+  .rc-desc{font-size:0.75rem;color:#777;line-height:1.4}
   .faq{max-width:960px;margin:0 auto;padding:0 48px 72px}
   .faqt{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:28px;display:flex;align-items:center;gap:12px}
   .faqt::after{content:'';flex:1;height:1px;background:var(--border)}
@@ -98,7 +92,7 @@
   @media(max-width:768px){
     header{padding:14px 18px} nav{display:none} .hamburger{display:flex}
     .page-hero,.tw,.faq,.related{padding-left:18px;padding-right:18px}
-    .page-hero{padding-top:44px} .tg{grid-template-columns:1fr}
+    .page-hero{padding-top:44px} .tg,.tg3{grid-template-columns:1fr}
     footer{padding:18px;flex-direction:column;text-align:center}
     #ck{flex-direction:column;align-items:flex-start}
   }
@@ -108,115 +102,111 @@
 <header>
   <a href="index.html" class="logo">CALC</a>
   <nav>
-    <a href="calcolo-iva.html" class="active">IVA</a>
+    <a href="calcolo-iva.html">IVA</a>
     <a href="calcolo-mutuo.html">Mutuo</a>
-    <a href="calcolo-percentuale.html">Percentuale</a>
-    <a href="calcolo-sconto.html">Sconto</a>
+    <a href="netto-lordo.html">Netto/Lordo</a>
+    <a href="calcolo-tfr.html" class="{'active' if slug=='calcolo-tfr' else ''}">TFR</a>
+    <a href="calcolo-pensione.html" class="{'active' if slug=='calcolo-pensione' else ''}">Pensione</a>
+    <a href="bollo-auto.html" class="{'active' if slug=='bollo-auto' else ''}">Bollo Auto</a>
     <a href="ritenuta-acconto.html">Ritenuta</a>
     <a href="cedolare-secca.html">Cedolare</a>
-    <a href="calcolo-interessi.html">Interessi</a>
-    <a href="netto-lordo.html">Netto/Lordo</a>
     <a href="calcolatrice.html">Calcolatrice</a>
   </nav>
   <div style="display:flex;align-items:center;gap:12px">
     <div class="lang-bar">
-      <button class="lb active" onclick="location.href='calcolo-iva.html'">IT</button>
-      <button class="lb" onclick="location.href='../en/vat-calculator.html'">EN</button>
-      <button class="lb" onclick="location.href='../de/mehrwertsteuer-rechner.html'">DE</button>
-      <button class="lb" onclick="location.href='../fr/calculateur-tva.html'">FR</button>
+      <button class="lb active" onclick="location.href='calcolo-tfr.html'">IT</button>
+      <button class="lb" onclick="location.href='../en/index.html'">EN</button>
+      <button class="lb" onclick="location.href='../de/index.html'">DE</button>
+      <button class="lb" onclick="location.href='../fr/index.html'">FR</button>
     </div>
     <button class="hamburger" onclick="document.getElementById('mn').classList.toggle('open')">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
-
 <div class="mobile-nav" id="mn">
   <button class="mobile-nav-close" onclick="document.getElementById('mn').classList.remove('open')">✕</button>
   <a href="index.html">Home</a>
   <a href="calcolo-iva.html">IVA</a>
   <a href="calcolo-mutuo.html">Mutuo</a>
-  <a href="calcolo-percentuale.html">Percentuale</a>
-  <a href="calcolo-sconto.html">Sconto</a>
+  <a href="netto-lordo.html">Netto/Lordo</a>
+  <a href="calcolo-tfr.html">TFR</a>
+  <a href="calcolo-pensione.html">Pensione</a>
+  <a href="bollo-auto.html">Bollo Auto</a>
   <a href="ritenuta-acconto.html">Ritenuta</a>
   <a href="cedolare-secca.html">Cedolare</a>
-  <a href="calcolo-interessi.html">Interessi</a>
-  <a href="netto-lordo.html">Netto/Lordo</a>
   <a href="calcolatrice.html">Calcolatrice</a>
 </div>
 
 <div class="page-hero">
-  <span class="tag">Aggiornato Maggio 2026</span>
-  <h1>CALCOLO <span>IVA</span></h1>
-  <p>Aggiungi o scorpora l'IVA da qualsiasi importo. Aliquote italiane: 22%, 10%, 5%, 4% super ridotta.</p>
-  <p class="intro">L'IVA (Imposta sul Valore Aggiunto) è l'imposta indiretta più comune in Italia, applicata su beni e servizi. Questo strumento calcola l'IVA in entrambe le direzioni: aggiungila a un importo netto, oppure scorporala da un prezzo già comprensivo di imposta. Gratuito, immediato, senza registrazione.</p>
+  <span class="tag">Aggiornato 2026</span>
+  <h1>CALCOLO <span>TFR</span></h1>
+  <p>Calcola il TFR (Trattamento di Fine Rapporto) maturato al termine del rapporto di lavoro. Stima precisa della tua liquidazione.</p>
+  <p class="intro">Il TFR è una quota dello stipendio che il datore di lavoro accantona ogni anno e corrisponde al dipendente alla fine del rapporto di lavoro (dimissioni, licenziamento o pensionamento). Si calcola come una quota della retribuzione annua lorda divisa per 13,5.</p>
 </div>
-
 <div class="tw"><div class="tc">
-  <div class="tg" style="margin-bottom:22px">
-    <div class="fg">
-      <label>Importo (€)</label>
-      <input class="fi" id="imp" type="number" placeholder="Es. 1000" min="0" step="0.01" oninput="autoCalc()"/>
-    </div>
-    <div class="fg">
-      <label>Aliquota IVA</label>
-      <select class="fs" id="aliq" onchange="autoCalc()">
-        <option value="22">22% — Ordinaria</option>
-        <option value="10">10% — Ridotta</option>
-        <option value="5">5% — Ridotta speciale</option>
-        <option value="4">4% — Super ridotta</option>
-      </select>
-    </div>
+  <div class="tg tg3" style="margin-bottom:22px">
+    <div class="fg"><label>Stipendio Annuo Lordo (€)</label><input class="fi" id="sal" type="number" placeholder="Es. 30000" min="0" step="100"/></div>
+    <div class="fg"><label>Anni di Lavoro</label><input class="fi" id="anni" type="number" placeholder="Es. 5" min="1" step="1"/></div>
+    <div class="fg"><label>Rivalutazione ISTAT (%)</label><input class="fi" id="istat" type="number" placeholder="Es. 2" min="0" step="0.1" value="2"/></div>
   </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px">
-    <button class="cb" style="margin:0" onclick="calcIva('add')">+ AGGIUNGI IVA</button>
-    <button class="cb cb2" style="margin:0" onclick="calcIva('rem')">SCORPORO IVA</button>
+  <div class="fg" style="margin-bottom:22px">
+    <label>TFR lasciato in azienda o versato al fondo pensione?</label>
+    <select class="fs" id="dest">
+      <option value="azienda">In azienda (aziende fino a 49 dipendenti)</option>
+      <option value="inps">Versato all'INPS (aziende 50+ dipendenti)</option>
+      <option value="fondo">Versato a fondo pensione complementare</option>
+    </select>
   </div>
+  <button class="cb" onclick="calcTFR()">CALCOLA TFR</button>
   <div class="rb" id="res">
-    <div class="rr"><span class="rl">Imponibile (senza IVA)</span><span class="rv" id="ri">—</span></div>
-    <div class="rr"><span class="rl">IVA (<span id="ra">22</span>%)</span><span class="rv" id="rv">—</span></div>
-    <div class="rr big"><span class="rl">Totale con IVA</span><span class="rv" id="rt">—</span></div>
+    <div class="rr"><span class="rl">Stipendio annuo lordo</span><span class="rv" id="r1">—</span></div>
+    <div class="rr"><span class="rl">Quota TFR annua (÷13,5)</span><span class="rv" id="r2">—</span></div>
+    <div class="rr"><span class="rl">Rivalutazione totale stimata</span><span class="rv" id="r3">—</span></div>
+    <div class="rr big"><span class="rl">TFR lordo totale</span><span class="rv" id="r4">—</span></div>
+    <div class="rr"><span class="rl">Tassazione stimata (~23%)</span><span class="rv" id="r5">—</span></div>
+    <div class="rr big"><span class="rl">TFR netto stimato</span><span class="rv" id="r6">—</span></div>
   </div>
-  <button class="copy-btn" id="copyBtn" onclick="copyResult()">📋 COPIA RISULTATO</button>
+  <div class="note">⚠️ Calcolo approssimativo. La tassazione effettiva del TFR è separata ed è calcolata con un'aliquota media IRPEF degli ultimi 5 anni. Consulta il tuo CAF o commercialista per un calcolo preciso.</div>
+  <button class="copy-btn" id="copyBtn" onclick="copyTFR()">📋 COPIA RISULTATO</button>
 </div></div>
 
 <div class="related">
   <div class="related-title">Vedi anche</div>
   <div class="related-grid">
-    <a href="ritenuta-acconto.html" class="rc"><div class="rc-icon">📄</div><div class="rc-title">Ritenuta d'Acconto</div><div class="rc-desc">Netto freelance e totale fattura con IVA</div></a>
-    <a href="calcolo-mutuo.html" class="rc"><div class="rc-icon">🏠</div><div class="rc-title">Calcolo Mutuo</div><div class="rc-desc">Rata mensile, interessi e costo complessivo</div></a>
-    <a href="netto-lordo.html" class="rc"><div class="rc-icon">💼</div><div class="rc-title">Netto ↔ Lordo</div><div class="rc-desc">Stipendio con IRPEF 2024 e contributi INPS</div></a>
-    <a href="cedolare-secca.html" class="rc"><div class="rc-icon">🏡</div><div class="rc-title">Cedolare Secca</div><div class="rc-desc">Imposta sugli affitti al 21% o 10%</div></a>
+    <a href="netto-lordo.html" class="rc"><div class="rc-icon">💵</div><div><div class="rc-title">Netto ↔ Lordo</div><div class="rc-desc">Stipendio con IRPEF e INPS</div></div></a>
+    <a href="calcolo-pensione.html" class="rc"><div class="rc-icon">👴</div><div><div class="rc-title">Calcolo Pensione</div><div class="rc-desc">Età e importo stimato</div></div></a>
+    <a href="ritenuta-acconto.html" class="rc"><div class="rc-icon">📄</div><div><div class="rc-title">Ritenuta d'Acconto</div><div class="rc-desc">Netto freelance e fattura</div></div></a>
   </div>
 </div>
 
 <div class="faq">
   <div class="faqt">Domande Frequenti</div>
-  <div class="fqi"><div class="fqq">Cos'è l'IVA e come funziona?<span class="arr">+</span></div><div class="fqa">L'IVA (Imposta sul Valore Aggiunto) è un'imposta indiretta applicata su ogni fase della produzione e distribuzione di beni e servizi in Italia. È il consumatore finale a sopportare il peso dell'imposta, già inclusa nel prezzo di vendita. Le aziende la riscuotono per conto dello Stato e la versano periodicamente all'Erario. In Italia è disciplinata dal D.P.R. 633/1972.</div></div>
-  <div class="fqi"><div class="fqq">Come si calcola lo scorporo IVA?<span class="arr">+</span></div><div class="fqa">Lo scorporo IVA consente di ricavare l'imponibile partendo da un prezzo comprensivo di imposta. La formula è: Imponibile = Totale ÷ (1 + aliquota). Esempio con IVA al 22%: prezzo totale €122 → imponibile €122 ÷ 1,22 = €100, IVA = €22. Utile per commercianti, professionisti e aziende che devono separare la quota IVA da un importo comprensivo.</div></div>
-  <div class="fqi"><div class="fqq">Quali sono le aliquote IVA in Italia nel 2026?<span class="arr">+</span></div><div class="fqa">In Italia esistono quattro aliquote IVA: 22% ordinaria (maggior parte di beni e servizi), 10% ridotta (prodotti alimentari non di prima necessità, turismo, ristorazione, alcune ristrutturazioni), 5% ridotta speciale (specifici beni e servizi sociali), 4% super ridotta (beni di prima necessità: pane, latte, libri, giornali, medicinali, abitazioni in prima casa non di lusso).</div></div>
-  <div class="fqi"><div class="fqq">Chi è esonerato dal pagamento dell'IVA?<span class="arr">+</span></div><div class="fqa">Alcune operazioni sono esenti IVA per legge: servizi sanitari, istruzione, operazioni finanziarie e assicurative. I contribuenti in regime forfettario non applicano l'IVA sulle proprie fatture e non detraggono l'IVA sugli acquisti. Le esportazioni di beni fuori dall'UE sono non imponibili (aliquota zero). Le operazioni intracomunitarie seguono regole specifiche basate sul principio di destinazione.</div></div>
-  <div class="fqi"><div class="fqq">Quando va versata l'IVA allo Stato?<span class="arr">+</span></div><div class="fqa">I contribuenti mensili versano l'IVA entro il 16 del mese successivo. Quelli trimestrali entro il 16 del secondo mese successivo al trimestre, con una maggiorazione dell'1%. La dichiarazione IVA annuale va presentata entro il 30 aprile dell'anno successivo. I ritardi comportano sanzioni calcolate in base ai giorni di ritardo e all'importo non versato.</div></div>
+  <div class="fqi"><div class="fqq">Cos'è il TFR?<span class="arr">+</span></div><div class="fqa">Il TFR (Trattamento di Fine Rapporto), detto anche liquidazione, è una quota della retribuzione che il datore di lavoro accantona ogni anno per il dipendente. Viene erogato alla fine del rapporto di lavoro, qualunque ne sia la causa: dimissioni, licenziamento, pensionamento o scadenza del contratto. È disciplinato dall'art. 2120 del Codice Civile.</div></div>
+  <div class="fqi"><div class="fqq">Come si calcola il TFR?<span class="arr">+</span></div><div class="fqa">La quota TFR annua si calcola dividendo la retribuzione annua lorda per 13,5. Esempio: con uno stipendio di €30.000 annui, la quota annua è €30.000 ÷ 13,5 = €2.222. Ogni anno questa quota viene rivalutata dell'1,5% fisso più il 75% dell'inflazione ISTAT. Dopo 5 anni con rivalutazione del 2%, il TFR lordo sarebbe circa €11.500.</div></div>
+  <div class="fqi"><div class="fqq">Conviene lasciare il TFR in azienda o versarlo al fondo pensione?<span class="arr">+</span></div><div class="fqa">Versare il TFR a un fondo pensione complementare offre vantaggi fiscali significativi: i contributi sono deducibili fino a €5.164/anno, il rendimento è tassato al 20% invece del 26%, e la prestazione finale è tassata al 15% (riducibile al 9% dopo 35 anni). In azienda il TFR è più sicuro ma meno redditizio. Per i giovani con lungo orizzonte temporale, il fondo pensione è generalmente più conveniente.</div></div>
+  <div class="fqi"><div class="fqq">Il TFR viene tassato?<span class="arr">+</span></div><div class="fqa">Sì, il TFR è soggetto a tassazione separata. L'aliquota si calcola come la media delle aliquote IRPEF applicate al reddito del dipendente negli ultimi 5 anni. In pratica l'aliquota effettiva è spesso intorno al 23%, ma può variare. L'imposta è applicata sulle somme maturate dal 2001 in poi; quelle maturate prima hanno un trattamento diverso.</div></div>
+  <div class="fqi"><div class="fqq">Posso richiedere un anticipo sul TFR?<span class="arr">+</span></div><div class="fqa">Sì. Dopo almeno 8 anni di servizio presso lo stesso datore di lavoro, il dipendente può richiedere un anticipo fino al 70% del TFR maturato. Le causali ammesse sono: acquisto della prima casa, spese sanitarie straordinarie, o congedo per maternità/paternità/formazione. La richiesta può essere fatta una sola volta nell'arco del rapporto di lavoro.</div></div>
 </div>
-
 <footer>
   <a href="index.html" class="logo">CALC</a>
   <div class="fl">
     <a href="calcolo-iva.html">IVA</a>
     <a href="calcolo-mutuo.html">Mutuo</a>
-    <a href="calcolo-percentuale.html">Percentuale</a>
-    <a href="calcolo-sconto.html">Sconto</a>
+    <a href="netto-lordo.html">Netto/Lordo</a>
+    <a href="calcolo-tfr.html">TFR</a>
+    <a href="calcolo-pensione.html">Pensione</a>
+    <a href="bollo-auto.html">Bollo Auto</a>
     <a href="ritenuta-acconto.html">Ritenuta</a>
     <a href="cedolare-secca.html">Cedolare</a>
     <a href="calcolo-interessi.html">Interessi</a>
-    <a href="netto-lordo.html">Netto/Lordo</a>
+    <a href="calcolo-percentuale.html">Percentuale</a>
+    <a href="calcolo-sconto.html">Sconto</a>
     <a href="calcolatrice.html">Calcolatrice</a>
     <a href="../privacy.html">Privacy</a>
-    <a href="contatti.html">Contatti</a>
   </div>
   <span class="fc">© 2026 calcolatore.eu</span>
 </footer>
-
 <div id="ck">
   <div style="flex:1">
     <p style="font-size:0.8rem;font-weight:600;margin-bottom:4px">🍪 Utilizziamo i cookie</p>
@@ -227,44 +217,40 @@
     <button onclick="acc()" style="background:var(--accent);border:none;border-radius:8px;color:#000;font-family:'DM Mono',monospace;font-size:0.68rem;font-weight:600;padding:7px 12px;cursor:pointer;letter-spacing:1px">ACCETTA</button>
   </div>
 </div>
-
 <script>
 function acc(){localStorage.setItem('cc','1');var e=document.getElementById('ck');if(e)e.style.display='none';}
 function rej(){localStorage.setItem('cc','0');var e=document.getElementById('ck');if(e)e.style.display='none';}
 var ckEl=document.getElementById('ck');if(ckEl&&localStorage.getItem('cc')!=null)ckEl.style.display='none';
 document.querySelectorAll('.fqi').forEach(i=>i.addEventListener('click',()=>i.classList.toggle('open')));
-
 var fmt=n=>'€ '+n.toLocaleString('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2});
-var lastMode='add';
 
-function calcIva(m){
-  lastMode=m;
-  var imp=parseFloat(document.getElementById('imp').value);
-  var a=parseFloat(document.getElementById('aliq').value)/100;
-  var av=document.getElementById('aliq').value;
-  if(isNaN(imp)||imp<=0)return;
-  var imponibile,iva,tot;
-  if(m==='add'){imponibile=imp;iva=imp*a;tot=imp+iva;}
-  else{tot=imp;imponibile=imp/(1+a);iva=tot-imponibile;}
-  document.getElementById('ri').textContent=fmt(imponibile);
-  document.getElementById('rv').textContent=fmt(iva);
-  document.getElementById('rt').textContent=fmt(tot);
-  document.getElementById('ra').textContent=av;
+function calcTFR(){
+  var sal=parseFloat(document.getElementById('sal').value);
+  var anni=parseFloat(document.getElementById('anni').value);
+  var istat=parseFloat(document.getElementById('istat').value)/100;
+  if(isNaN(sal)||isNaN(anni)||sal<=0||anni<=0)return;
+  var quotaAnnua=sal/13.5;
+  var tfr=0;
+  for(var i=0;i<anni;i++){
+    tfr=(tfr+quotaAnnua)*(1+0.015+0.75*istat);
+  }
+  var tasse=tfr*0.23;
+  var netto=tfr-tasse;
+  var rivalutazione=tfr-quotaAnnua*anni;
+  document.getElementById('r1').textContent=fmt(sal);
+  document.getElementById('r2').textContent=fmt(quotaAnnua);
+  document.getElementById('r3').textContent=fmt(rivalutazione);
+  document.getElementById('r4').textContent=fmt(tfr);
+  document.getElementById('r5').textContent=fmt(tasse);
+  document.getElementById('r6').textContent=fmt(netto);
   document.getElementById('res').classList.add('show');
   document.getElementById('copyBtn').classList.add('visible');
 }
-
-function autoCalc(){
-  var imp=document.getElementById('imp').value;
-  if(imp&&parseFloat(imp)>0)calcIva(lastMode);
-}
-
-function copyResult(){
-  var text='Imponibile: '+document.getElementById('ri').textContent+'\nIVA ('+document.getElementById('ra').textContent+'%): '+document.getElementById('rv').textContent+'\nTotale: '+document.getElementById('rt').textContent;
+function copyTFR(){
+  var text='TFR lordo: '+document.getElementById('r4').textContent+'\nTFR netto stimato: '+document.getElementById('r6').textContent;
   navigator.clipboard.writeText(text).then(function(){
-    var btn=document.getElementById('copyBtn');
-    btn.textContent='✅ COPIATO!';
-    setTimeout(function(){btn.textContent='📋 COPIA RISULTATO';},2000);
+    var b=document.getElementById('copyBtn');b.textContent='✅ COPIATO!';
+    setTimeout(function(){b.textContent='📋 COPIA RISULTATO';},2000);
   });
 }
 </script>
