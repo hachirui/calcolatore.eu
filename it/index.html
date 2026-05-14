@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="Calcolatori gratuiti online: IVA, mutuo, TFR, pensione, bollo auto, percentuale, sconto, ritenuta, cedolare secca e molto altro. Nessuna registrazione."/>
+  <meta property="og:title" content="Calcolatore Online Gratis — IVA, Mutuo, TFR, Pensione | calcolatore.eu"/>
+  <meta property="og:description" content="Tutti i calcolatori che ti servono: fisco, lavoro, casa, risparmio. Gratuiti, immediati, senza registrazione."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://calcolatore.eu/it/"/>
+  <title>Calcolatore Online Gratis — IVA, Mutuo, TFR, Pensione | calcolatore.eu</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Bebas+Neue&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#0d0d0d;--card:#1c1c1c;--border:#2a2a2a;--accent:#e8ff47;--accent2:#ff6b35;--text:#f0f0f0;--muted:#555;--btn:#222;--btn-h:#2e2e2e}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:0.4}
+
+  /* HEADER */
+  header{display:flex;justify-content:space-between;align-items:center;padding:20px 48px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(13,13,13,0.93);backdrop-filter:blur(12px);z-index:100;gap:16px;flex-wrap:wrap}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:4px;color:var(--accent);text-decoration:none}
+  .lang-bar{display:flex;gap:4px}
+  .lb{background:none;border:1px solid transparent;border-radius:6px;color:var(--muted);font-family:'DM Mono',monospace;font-size:0.7rem;padding:4px 8px;cursor:pointer;transition:all 0.15s;letter-spacing:1px}
+  .lb:hover{color:var(--text);border-color:var(--border)}
+  .lb.active{color:var(--accent);border-color:var(--accent);background:rgba(232,255,71,0.06)}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+  .hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px}
+  .mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(13,13,13,0.97);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:20px;overflow-y:auto;padding:60px 20px}
+  .mobile-nav.open{display:flex}
+  .mobile-nav a{color:var(--text);text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:3px}
+  .mobile-nav a:hover{color:var(--accent)}
+  .mobile-nav-close{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+
+  /* HERO */
+  .hero{padding:72px 48px 56px;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 340px;gap:60px;align-items:start}
+  .hero-text h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,6vw,6.5rem);line-height:0.9;letter-spacing:2px;margin-bottom:18px}
+  .hero-text h1 span{color:var(--accent);display:block}
+  .hero-text p{color:#888;font-size:0.95rem;line-height:1.8;font-weight:300;max-width:480px;margin-bottom:32px}
+  .tag{display:inline-block;background:var(--accent);color:#000;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:2px;padding:4px 10px;margin-bottom:20px;font-weight:500}
+
+  /* CATEGORIES */
+  .categories{max-width:1300px;margin:0 auto;padding:0 48px 80px}
+  .cat-section{margin-bottom:48px}
+  .cat-header{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+  .cat-icon{font-size:1.3rem}
+  .cat-title{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:2px;color:var(--text)}
+  .cat-line{flex:1;height:1px;background:var(--border)}
+  .cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+  .tool-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;text-decoration:none;color:var(--text);transition:border-color 0.2s,transform 0.2s;display:flex;align-items:center;gap:14px}
+  .tool-card:hover{border-color:#3a3a3a;transform:translateY(-2px)}
+  .tool-card .tc-icon{font-size:1.5rem;flex-shrink:0}
+  .tool-card .tc-text{}
+  .tool-card .tc-name{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:1px;margin-bottom:3px}
+  .tool-card .tc-desc{font-size:0.75rem;color:#777;line-height:1.4}
+  .tool-card.new{border-color:rgba(232,255,71,0.2);background:rgba(232,255,71,0.03)}
+  .tool-card.new .tc-name::after{content:'NUOVO';font-size:0.5rem;background:var(--accent);color:#000;padding:2px 5px;border-radius:3px;margin-left:8px;vertical-align:middle;font-family:'DM Mono',monospace;letter-spacing:1px}
+
+  /* CALCULATOR */
+  .btn{background:var(--btn);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'DM Mono',monospace;font-size:0.95rem;padding:17px 8px;cursor:pointer;transition:background 0.12s,transform 0.08s,border-color 0.12s;user-select:none}
+  .btn:hover{background:var(--btn-h);border-color:#3a3a3a}
+  .btn:active{transform:scale(0.93)}
+  .btn.op{color:var(--accent);background:rgba(232,255,71,0.06)}
+  .btn.op:hover{background:rgba(232,255,71,0.12)}
+  .btn.eq{background:var(--accent);color:#000;border-color:var(--accent);font-size:1.1rem;font-weight:600}
+  .btn.eq:hover{background:#d4eb30}
+  .btn.cl{color:var(--accent2);background:rgba(255,107,53,0.08);border-color:rgba(255,107,53,0.2)}
+  .btn.fn{color:#aaa;font-size:0.78rem}
+  .btn.zero{grid-column:span 2;text-align:left;padding-left:20px}
+  .btn.sci{font-size:0.7rem;padding:11px 4px;color:#a0cfff;background:rgba(100,160,255,0.06);border-color:rgba(100,160,255,0.15)}
+  .btn.sci:hover{background:rgba(100,160,255,0.14)}
+  .calc-box{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px;position:sticky;top:90px}
+  .calc-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+  .calc-label{font-family:'Bebas Neue',sans-serif;font-size:0.8rem;letter-spacing:4px;color:var(--muted)}
+  .mode-btn{display:flex;align-items:center;gap:7px;background:none;border:1px solid var(--border);border-radius:20px;padding:4px 10px 4px 7px;cursor:pointer;color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:1.5px;text-transform:uppercase;transition:all 0.2s}
+  .mode-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .mode-dot{width:16px;height:16px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:0.65rem;transition:all 0.2s}
+  .display{background:#111;border:1px solid var(--border);border-radius:11px;padding:14px 18px 11px;margin-bottom:16px;text-align:right;min-height:80px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+  #ce{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted);min-height:16px;word-break:break-all}
+  #cr{font-family:'DM Mono',monospace;font-size:2.2rem;font-weight:300;color:var(--accent);letter-spacing:-1px;line-height:1;overflow:hidden;text-overflow:ellipsis;transition:font-size 0.1s}
+  #sp{overflow:hidden;max-height:0;opacity:0;margin-bottom:0;transition:max-height 0.4s cubic-bezier(0.22,1,0.36,1),opacity 0.3s,margin 0.3s}
+  .sci-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;padding:2px 0 8px;border-bottom:1px solid var(--border);margin-bottom:7px}
+  .btn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .fl{display:flex;gap:16px;flex-wrap:wrap}
+  .fl a{color:var(--muted);font-family:'DM Mono',monospace;font-size:0.68rem;text-decoration:none;letter-spacing:1px;transition:color 0.2s}
+  .fl a:hover{color:var(--text)}
+  .fc{color:var(--muted);font-family:'DM Mono',monospace;font-size:0.68rem}
+
+  /* COOKIE */
+  #ck{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 24px;display:flex;align-items:center;gap:16px;box-shadow:0 20px 60px rgba(0,0,0,0.6);z-index:998;max-width:660px;width:calc(100% - 40px);animation:su 0.4s cubic-bezier(0.22,1,0.36,1) both}
+  @keyframes su{from{opacity:0;transform:translateX(-50%) translateY(16px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+  @keyframes fi{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+  @media(max-width:1024px){
+    .hero{grid-template-columns:1fr;gap:40px}
+    .calc-box{position:static;max-width:380px}
+  }
+  @media(max-width:768px){
+    header{padding:14px 18px}
+    .hamburger{display:flex}
+    .lang-bar{display:none}
+    .hero,.categories{padding-left:18px;padding-right:18px}
+    .hero{padding-top:44px;grid-template-columns:1fr;gap:24px}
+    .calc-box{display:block;position:static;max-width:100%}
+    .mob-calc{display:none!important}
+    .cat-grid{grid-template-columns:1fr 1fr}
+    footer{padding:18px;flex-direction:column;text-align:center}
+    #ck{flex-direction:column;align-items:flex-start}
+  }
+  @media(max-width:480px){
+    .cat-grid{grid-template-columns:1fr}
+  }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">CALC</a>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="lang-bar">
+      <button class="lb active" onclick="location.href='index.html'">IT</button>
+      <button class="lb" onclick="location.href='../en/index.html'">EN</button>
+      <button class="lb" onclick="location.href='../de/index.html'">DE</button>
+      <button class="lb" onclick="location.href='../fr/index.html'">FR</button>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('mn').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mn">
+  <button class="mobile-nav-close" onclick="document.getElementById('mn').classList.remove('open')">✕</button>
+  <a href="calcolo-iva.html">IVA</a>
+  <a href="calcolo-mutuo.html">Mutuo</a>
+  <a href="calcolo-percentuale.html">Percentuale</a>
+  <a href="calcolo-sconto.html">Sconto</a>
+  <a href="ritenuta-acconto.html">Ritenuta</a>
+  <a href="cedolare-secca.html">Cedolare</a>
+  <a href="calcolo-interessi.html">Interessi</a>
+  <a href="netto-lordo.html">Netto/Lordo</a>
+  <a href="calcolo-tfr.html">TFR</a>
+  <a href="calcolo-pensione.html">Pensione</a>
+  <a href="bollo-auto.html">Bollo Auto</a>
+  <a href="calcolatrice.html">Calcolatrice</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <span class="tag">12 Strumenti Gratuiti</span>
+    <h1>CALCOLA<span>TUTTO.</span></h1>
+    <p>Strumenti di calcolo precisi e gratuiti per fisco, lavoro, casa e risparmio. Nessuna registrazione, nessun abbonamento.</p>
+  </div>
+  <!-- CALCOLATRICE -->
+  <div class="calc-box">
+    <div class="calc-header">
+      <span class="calc-label">CALC — 01</span>
+      <button class="mode-btn" id="modeBtn" onclick="toggleSci()">
+        <span class="mode-dot" id="dot">∑</span>
+        <span id="modeLabel">SCI</span>
+      </button>
+    </div>
+    <div class="display">
+      <div id="ce"></div>
+      <div id="cr">0</div>
+    </div>
+    <div id="sp">
+      <div class="sci-grid">
+        <button class="btn sci" onclick="sciOp('sin')">sin</button>
+        <button class="btn sci" onclick="sciOp('cos')">cos</button>
+        <button class="btn sci" onclick="sciOp('tan')">tan</button>
+        <button class="btn sci" onclick="sciOp('log')">log</button>
+        <button class="btn sci" onclick="sciOp('ln')">ln</button>
+        <button class="btn sci" onclick="sciOp('sqrt')">√</button>
+        <button class="btn sci" onclick="sciOp('sq')">x²</button>
+        <button class="btn sci" onclick="sciOp('cube')">x³</button>
+        <button class="btn sci" onclick="sciOp('inv')">1/x</button>
+        <button class="btn sci" onclick="sciOp('exp')">eˣ</button>
+        <button class="btn sci" onclick="sciOp('pi')">π</button>
+        <button class="btn sci" onclick="sciOp('e')">e</button>
+        <button class="btn sci" onclick="sciOp('abs')">|x|</button>
+        <button class="btn sci" onclick="sciOp('fact')">n!</button>
+        <button class="btn sci" onclick="inp('**')">xʸ</button>
+        <button class="btn sci" onclick="sciOp('cbrt')">∛</button>
+      </div>
+    </div>
+    <div class="btn-grid">
+      <button class="btn fn" onclick="calcFn('sgn')">+/−</button>
+      <button class="btn fn" onclick="calcFn('pct')">%</button>
+      <button class="btn cl" onclick="calcFn('clear')">AC</button>
+      <button class="btn op" onclick="inp('/')">÷</button>
+      <button class="btn" onclick="inp('7')">7</button>
+      <button class="btn" onclick="inp('8')">8</button>
+      <button class="btn" onclick="inp('9')">9</button>
+      <button class="btn op" onclick="inp('*')">×</button>
+      <button class="btn" onclick="inp('4')">4</button>
+      <button class="btn" onclick="inp('5')">5</button>
+      <button class="btn" onclick="inp('6')">6</button>
+      <button class="btn op" onclick="inp('-')">−</button>
+      <button class="btn" onclick="inp('1')">1</button>
+      <button class="btn" onclick="inp('2')">2</button>
+      <button class="btn" onclick="inp('3')">3</button>
+      <button class="btn op" onclick="inp('+')">+</button>
+      <button class="btn zero" onclick="inp('0')">0</button>
+      <button class="btn" onclick="inp('.')">.</button>
+      <button class="btn eq" onclick="calcFn('eq')">=</button>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIE -->
+<div class="categories">
+
+  <!-- FISCO -->
+  <div class="cat-section">
+    <div class="cat-header">
+      <span class="cat-icon">💰</span>
+      <span class="cat-title">Fisco & Tasse</span>
+      <div class="cat-line"></div>
+    </div>
+    <div class="cat-grid">
+      <a href="calcolo-iva.html" class="tool-card">
+        <div class="tc-icon">🧾</div>
+        <div class="tc-text"><div class="tc-name">Calcolo IVA</div><div class="tc-desc">Aggiungi o scorpora al 22%, 10%, 5%, 4%</div></div>
+      </a>
+      <a href="ritenuta-acconto.html" class="tool-card">
+        <div class="tc-icon">📄</div>
+        <div class="tc-text"><div class="tc-name">Ritenuta d'Acconto</div><div class="tc-desc">Netto freelance e totale fattura</div></div>
+      </a>
+      <a href="cedolare-secca.html" class="tool-card">
+        <div class="tc-icon">🏡</div>
+        <div class="tc-text"><div class="tc-name">Cedolare Secca</div><div class="tc-desc">Imposta affitti 21% o 10%</div></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- LAVORO -->
+  <div class="cat-section">
+    <div class="cat-header">
+      <span class="cat-icon">💼</span>
+      <span class="cat-title">Lavoro & Stipendio</span>
+      <div class="cat-line"></div>
+    </div>
+    <div class="cat-grid">
+      <a href="netto-lordo.html" class="tool-card">
+        <div class="tc-icon">💵</div>
+        <div class="tc-text"><div class="tc-name">Netto ↔ Lordo</div><div class="tc-desc">Stipendio con IRPEF e INPS 2024</div></div>
+      </a>
+      <a href="calcolo-tfr.html" class="tool-card new">
+        <div class="tc-icon">📦</div>
+        <div class="tc-text"><div class="tc-name">Calcolo TFR</div><div class="tc-desc">Liquidazione al termine del rapporto</div></div>
+      </a>
+      <a href="calcolo-pensione.html" class="tool-card new">
+        <div class="tc-icon">👴</div>
+        <div class="tc-text"><div class="tc-name">Calcolo Pensione</div><div class="tc-desc">Età pensionabile e assegno stimato</div></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- CASA -->
+  <div class="cat-section">
+    <div class="cat-header">
+      <span class="cat-icon">🏠</span>
+      <span class="cat-title">Casa & Immobiliare</span>
+      <div class="cat-line"></div>
+    </div>
+    <div class="cat-grid">
+      <a href="calcolo-mutuo.html" class="tool-card">
+        <div class="tc-icon">🏦</div>
+        <div class="tc-text"><div class="tc-name">Calcolo Mutuo</div><div class="tc-desc">Rata mensile e interessi totali</div></div>
+      </a>
+      <a href="bollo-auto.html" class="tool-card new">
+        <div class="tc-icon">🚗</div>
+        <div class="tc-text"><div class="tc-name">Bollo Auto</div><div class="tc-desc">Tassa automobilistica per regione</div></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- GENERALI -->
+  <div class="cat-section">
+    <div class="cat-header">
+      <span class="cat-icon">📊</span>
+      <span class="cat-title">Calcolatori Generali</span>
+      <div class="cat-line"></div>
+    </div>
+    <div class="cat-grid">
+      <a href="calcolo-percentuale.html" class="tool-card">
+        <div class="tc-icon">📊</div>
+        <div class="tc-text"><div class="tc-name">Percentuale</div><div class="tc-desc">X% di N, variazioni, proporzioni</div></div>
+      </a>
+      <a href="calcolo-sconto.html" class="tool-card">
+        <div class="tc-icon">🏷️</div>
+        <div class="tc-text"><div class="tc-name">Sconto</div><div class="tc-desc">Prezzo scontato e risparmio</div></div>
+      </a>
+      <a href="calcolo-interessi.html" class="tool-card">
+        <div class="tc-icon">📈</div>
+        <div class="tc-text"><div class="tc-name">Interessi</div><div class="tc-desc">Semplici e composti</div></div>
+      </a>
+      <a href="calcolatrice.html" class="tool-card">
+        <div class="tc-icon">🔢</div>
+        <div class="tc-text"><div class="tc-name">Calcolatrice</div><div class="tc-desc">Standard e scientifica</div></div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html" class="logo">CALC</a>
+  <div class="fl">
+    <a href="calcolo-iva.html">IVA</a>
+    <a href="calcolo-mutuo.html">Mutuo</a>
+    <a href="netto-lordo.html">Netto/Lordo</a>
+    <a href="calcolo-tfr.html">TFR</a>
+    <a href="calcolo-pensione.html">Pensione</a>
+    <a href="bollo-auto.html">Bollo Auto</a>
+    <a href="ritenuta-acconto.html">Ritenuta</a>
+    <a href="cedolare-secca.html">Cedolare</a>
+    <a href="calcolo-interessi.html">Interessi</a>
+    <a href="calcolo-percentuale.html">Percentuale</a>
+    <a href="calcolo-sconto.html">Sconto</a>
+    <a href="calcolatrice.html">Calcolatrice</a>
+    <a href="../privacy.html">Privacy</a>
+    <a href="contatti.html">Contatti</a>
+  </div>
+  <span class="fc">© 2026 calcolatore.eu</span>
+</footer>
+
+<div id="ck">
+  <div style="flex:1">
+    <p style="font-size:0.8rem;font-weight:600;margin-bottom:4px">🍪 Utilizziamo i cookie</p>
+    <p style="font-size:0.71rem;color:var(--muted);line-height:1.6">Cookie tecnici e Google AdSense per annunci pertinenti. <a href="../privacy.html" style="color:var(--accent);text-decoration:none">Privacy Policy</a></p>
+  </div>
+  <div style="display:flex;gap:8px;flex-shrink:0">
+    <button onclick="rej()" style="background:none;border:1px solid var(--border);border-radius:8px;color:var(--muted);font-family:'DM Mono',monospace;font-size:0.68rem;padding:7px 12px;cursor:pointer;letter-spacing:1px">RIFIUTA</button>
+    <button onclick="acc()" style="background:var(--accent);border:none;border-radius:8px;color:#000;font-family:'DM Mono',monospace;font-size:0.68rem;font-weight:600;padding:7px 12px;cursor:pointer;letter-spacing:1px">ACCETTA</button>
+  </div>
+</div>
+
+<script>
+function acc(){localStorage.setItem('cc','1');var e=document.getElementById('ck');if(e)e.style.display='none';}
+function rej(){localStorage.setItem('cc','0');var e=document.getElementById('ck');if(e)e.style.display='none';}
+var ckEl=document.getElementById('ck');if(ckEl&&localStorage.getItem('cc')!=null)ckEl.style.display='none';
+
+var cur='0',ex='',jeval=false;
+function getR(){return document.getElementById('cr');}
+function getE(){return document.getElementById('ce');}
+function upd(){var r=getR(),e=getE();if(!r||!e)return;r.textContent=cur;e.textContent=ex;var l=cur.length;r.style.fontSize=l>12?'1.1rem':l>8?'1.6rem':'2.2rem';}
+function inp(v){
+  var isOp=['+','-','*','/','**'].includes(v);
+  if(jeval&&!isOp){cur=v==='.'?'0.':v;ex='';jeval=false;upd();return;}
+  jeval=false;
+  if(isOp){if(cur!==''||ex!==''){ex+=(cur||'')+dop(v);cur='';}else if(ex){ex=ex.slice(0,-3)+dop(v);}upd();return;}
+  if(v==='.'&&cur.includes('.'))return;
+  cur=cur==='0'&&v!=='.'?v:cur+v;upd();
+}
+function dop(o){return{'+':' + ','-':' − ','*':' × ','/':' ÷ ','**':' ** '}[o]||o;}
+function rop(o){return{' + ':'+', ' − ':'-', ' × ':'*', ' ÷ ':'/', ' ** ':'**'}[o]||o;}
+function calcFn(f){
+  if(f==='clear'){cur='0';ex='';jeval=false;}
+  else if(f==='eq'){
+    if(!cur&&!ex)return;
+    var raw=ex.replace(/ [+−×÷].? /g,m=>rop(m))+cur;
+    try{var res=Function('"use strict";return ('+raw+')')();var rs=+res.toFixed(10)+'';getE().textContent=ex+cur+' =';cur=rs;ex='';jeval=true;}
+    catch(e){cur='Errore';}
+  }
+  else if(f==='pct'&&cur)cur=String(parseFloat(cur)/100);
+  else if(f==='sgn'&&cur&&cur!=='0')cur=cur.startsWith('-')?cur.slice(1):'-'+cur;
+  upd();
+}
+function sciOp(f){
+  var v=parseFloat(cur)||0,res,lbl;
+  switch(f){
+    case 'sin':res=Math.sin(v*Math.PI/180);lbl='sin('+v+'°)';break;
+    case 'cos':res=Math.cos(v*Math.PI/180);lbl='cos('+v+'°)';break;
+    case 'tan':res=Math.tan(v*Math.PI/180);lbl='tan('+v+'°)';break;
+    case 'log':res=Math.log10(v);lbl='log('+v+')';break;
+    case 'ln':res=Math.log(v);lbl='ln('+v+')';break;
+    case 'sqrt':res=Math.sqrt(v);lbl='√('+v+')';break;
+    case 'sq':res=v*v;lbl='('+v+')²';break;
+    case 'cube':res=v*v*v;lbl='('+v+')³';break;
+    case 'inv':res=1/v;lbl='1/'+v;break;
+    case 'exp':res=Math.exp(v);lbl='e^('+v+')';break;
+    case 'abs':res=Math.abs(v);lbl='|'+v+'|';break;
+    case 'fact':var n=Math.round(Math.abs(v));res=1;for(var i=2;i<=n;i++)res*=i;lbl=n+'!';break;
+    case 'cbrt':res=Math.cbrt(v);lbl='∛('+v+')';break;
+    case 'pi':cur=String(Math.PI);upd();return;
+    case 'e':cur=String(Math.E);upd();return;
+    default:return;
+  }
+  var rs=+res.toFixed(10)+'';
+  getE().textContent=lbl+' =';cur=rs;jeval=true;upd();
+}
+var sciOpen=false;
+function toggleSci(){
+  sciOpen=!sciOpen;
+  var p=document.getElementById('sp');
+  p.style.maxHeight=sciOpen?'220px':'0';p.style.opacity=sciOpen?'1':'0';p.style.marginBottom=sciOpen?'8px':'0';
+  var mb=document.getElementById('modeBtn');
+  mb.style.borderColor=sciOpen?'var(--accent)':'var(--border)';mb.style.color=sciOpen?'var(--accent)':'var(--muted)';
+  var d=document.getElementById('dot');d.style.background=sciOpen?'var(--accent)':'var(--border)';d.style.color=sciOpen?'#000':'var(--muted)';
+  document.getElementById('modeLabel').textContent=sciOpen?'BASE':'SCI';
+}
+document.addEventListener('DOMContentLoaded',function(){
+  upd();
+  document.addEventListener('keydown',function(e){
+    if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT')return;
+    if(e.key>='0'&&e.key<='9')inp(e.key);
+    else if(e.key==='.')inp('.');
+    else if(['+','-','*','/'].includes(e.key))inp(e.key);
+    else if(e.key==='Enter'||e.key==='=')calcFn('eq');
+    else if(e.key==='Escape')calcFn('clear');
+    else if(e.key==='Backspace'){if(cur.length>1)cur=cur.slice(0,-1);else cur='0';upd();}
+  });
+});
+</script>
+</body>
+</html>
